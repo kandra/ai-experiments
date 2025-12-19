@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: invoice-parser
+    runtime: python
+    region: virginia
+    plan: free      # We want the free tier!
+    
+    # Python dependencies
+    buildCommand: pip install -r requirements.txt
+    
+    # Start command (Updated for your new folder structure)
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    
+    # Environment Variables
+    envVars:
+      - key: DATABASE_URL
+        sync: false  # 'false' means you will enter the actual password in the dashboard
+      - key: GOOGLE_API_KEY
+        sync: false
+      - key: GOOGLE_APPLICATION_CREDENTIALS
+        value: /etc/secrets/credentials.json
+
+    # Secret Files (This tells Render to create the file from content you provide)
+    files:
+      - key: credentials.json
+        content: $GOOGLE_CREDENTIALS_JSON_CONTENT
