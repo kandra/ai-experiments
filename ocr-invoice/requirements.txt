@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+puremagic
+google-cloud-vision
+google-genai
+python-dotenv
+psycopg2-binary

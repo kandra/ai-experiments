@@ -1,0 +1,54 @@
+# --- Security (Never upload these!) ---
+.env
+credentials.json
+*.key
+*.pem
+
+# --- Python Basics ---
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environments (Keep these local)
+venv/
+env/
+.venv/
+ENV/
+
+# --- Operating System Files ---
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# --- IDE Settings (Optional but recommended) ---
+.vscode/
+.idea/
+
+# ---- EXCLUDE TEST FILES ----
+test.pdf
+imagetest.jpeg
