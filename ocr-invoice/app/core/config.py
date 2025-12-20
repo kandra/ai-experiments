@@ -12,6 +12,7 @@ class Settings:
     DATABASE_URL: str = os.getenv("DATABASE_URL")
     GOOGLE_API_KEY: str = os.getenv("GOOGLE_API_KEY")
     GOOGLE_APPLICATION_CREDENTIALS: str = os.getenv("GOOGLE_APPLICATION_CREDENTIALS", "credentials.json")
+    APP_API_KEY: str = os.getenv("APP_API_KEY")
 
     def validate(self):
         """Verifica que las variables críticas existan."""
@@ -21,6 +22,8 @@ class Settings:
             raise ValueError("❌ Error Crítico: Falta GOOGLE_API_KEY en el archivo .env")
         if not os.path.exists(self.GOOGLE_APPLICATION_CREDENTIALS):
             raise ValueError(f"❌ No encuentro el archivo de credenciales en: {self.GOOGLE_APPLICATION_CREDENTIALS}")
+        if not self.APP_API_KEY:
+            raise ValueError("❌ Falta APP_API_KEY en el archivo .env")
 
 # Instanciamos la clase para importarla desde otros lados
 settings = Settings()

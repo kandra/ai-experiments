@@ -1,11 +1,15 @@
-from fastapi import APIRouter, UploadFile, File, HTTPException
+from fastapi import APIRouter, UploadFile, File, HTTPException, Depends
 from app.services import ocr_service, ai_service, db_service
+from app.core.security import validate_api_key
 import json
 
 # Creamos el router (como una "mini app")
 router = APIRouter()
 
-@router.post("/ocr-invoice")
+
+# Esto protege TODAS las rutas que estén debajo de este router, 
+# o puedes ponerlo solo en el @router.post si prefieres.
+@router.post("/ocr-invoice", dependencies=[Depends(validate_api_key)])
 async def process_invoice(file: UploadFile = File(...)):
     print(f"📥 Recibido: {file.filename}")
     
